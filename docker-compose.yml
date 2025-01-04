@@ -1,0 +1,31 @@
+services:
+  microservice:
+    build:
+      context: .
+      # dockerfile: Dockerfile   # Reference the Dockerfile for the users service
+    ports:
+      - "8000:8000"
+    environment:
+      # Set the default settings module for the microservice
+      - DJANGO_SETTINGS_MODULE=my_microservice_project.settings.app
+  users:
+    build:
+      context: .
+      # dockerfile: Dockerfile.users   # Reference the Dockerfile for the users service
+    ports:
+      - "8001:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=my_microservice_project.settings.users
+
+
+  products:
+    build:
+      context: .
+      # dockerfile: Dockerfile.products  # Reference the Dockerfile for the products service
+    ports:
+      - "8002:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=my_microservice_project.settings.products
+ 
+
+
